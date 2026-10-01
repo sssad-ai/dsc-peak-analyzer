@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsc-peak-analyzer"
+version = "0.1.0"
+description = "Simple DSC analysis with raw-time integration and user-supplied crystallinity inputs"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dynamic = ["dependencies"]
+
+[project.scripts]
+dsc-batch = "dsc_analyzer.batch:main"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+include = ["dsc_analyzer*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
